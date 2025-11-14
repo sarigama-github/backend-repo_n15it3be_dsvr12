@@ -9,3 +9,7 @@ INFO:     172.20.0.1:60092 - "GET /api/event HTTP/1.1" 200 OK
 INFO:     172.20.0.1:60108 - "GET /api/places HTTP/1.1" 200 OK
 INFO:     172.20.0.1:60092 - "GET /api/event HTTP/1.1" 200 OK
 INFO:     172.20.0.1:60108 - "GET /api/places HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60112 - "GET /api/event HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60112 - "GET /api/places HTTP/1.1" 200 OK
+INFO:     172.20.0.1:41806 - "GET /api/event HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60112 - "GET /api/places HTTP/1.1" 200 OK
