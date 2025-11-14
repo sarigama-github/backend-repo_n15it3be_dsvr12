@@ -11,8 +11,8 @@ Model name is converted to lowercase for the collection name:
 - BlogPost -> "blogs" collection
 """
 
-from pydantic import BaseModel, Field
-from typing import Optional
+from pydantic import BaseModel, Field, HttpUrl
+from typing import Optional, List
 
 # Example schemas (replace with your own):
 
@@ -38,11 +38,32 @@ class Product(BaseModel):
     category: str = Field(..., description="Product category")
     in_stock: bool = Field(True, description="Whether product is in stock")
 
-# Add your own schemas here:
-# --------------------------------------------------
+# Wedding site schemas
 
-# Note: The Flames database viewer will automatically:
-# 1. Read these schemas from GET /schema endpoint
-# 2. Use them for document validation when creating/editing
-# 3. Handle all database operations (CRUD) directly
-# 4. You don't need to create any database endpoints!
+class Event(BaseModel):
+    """
+    Event details for the wedding website.
+    Collection name: "event"
+    """
+    couple_names: str = Field(..., description="Names of the couple")
+    date: str = Field(..., description="Date of the wedding, e.g., 2026-05-10")
+    city: str = Field(..., description="City and province")
+    church_name: str = Field(..., description="Church name")
+    church_address: str = Field(..., description="Full church address")
+    venue_name: str = Field(..., description="Reception venue name")
+    venue_address: str = Field(..., description="Reception venue address")
+    notes: Optional[str] = Field(None, description="Extra notes shown on the homepage")
+
+class Place(BaseModel):
+    """
+    Generic place (hairdresser, barber, hotel, restaurant, cultural POI, etc.)
+    Collection name: "place"
+    """
+    category: str = Field(..., description="One of: church, venue, hairdresser, barber, hotel, restaurant, poi")
+    name: str = Field(..., description="Place name")
+    address: str = Field(..., description="Full address")
+    description: Optional[str] = Field(None, description="Short description or tips")
+    phone: Optional[str] = Field(None, description="Phone number")
+    website: Optional[str] = Field(None, description="Website URL as string")
+    maps_url: Optional[str] = Field(None, description="Google Maps link")
+    tags: Optional[List[str]] = Field(default=None, description="Optional tags/labels")
